@@ -1,4 +1,4 @@
-package ru.practicum.server.services;
+package ru.practicum.server.service;
 
 import ru.practicum.dto.RequestInfoDto;
 import ru.practicum.dto.RequestInfoSummaryDto;

@@ -1,7 +1,7 @@
-package ru.practicum.server.mappers;
+package ru.practicum.server.mapper;
 
 import ru.practicum.dto.RequestInfoDto;
-import ru.practicum.server.models.RequestInfo;
+import ru.practicum.server.model.RequestInfo;
 
 public class RequestInfoMapper {
 

@@ -1,7 +1,7 @@
-package ru.practicum.server.mappers;
+package ru.practicum.server.mapper;
 
 import ru.practicum.dto.RequestInfoSummaryDto;
-import ru.practicum.server.projections.RequestInfoSummary;
+import ru.practicum.server.projection.RequestInfoSummary;
 
 public class RequestInfoSummaryMapper {
 

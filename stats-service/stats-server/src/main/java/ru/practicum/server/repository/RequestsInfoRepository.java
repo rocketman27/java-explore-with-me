@@ -1,10 +1,10 @@
-package ru.practicum.server.repositories;
+package ru.practicum.server.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import ru.practicum.server.models.RequestInfo;
-import ru.practicum.server.projections.RequestInfoSummary;
+import ru.practicum.server.model.RequestInfo;
+import ru.practicum.server.projection.RequestInfoSummary;
 
 import java.time.LocalDateTime;
 import java.util.List;

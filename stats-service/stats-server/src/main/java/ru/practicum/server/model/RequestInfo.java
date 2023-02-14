@@ -1,4 +1,4 @@
-package ru.practicum.server.models;
+package ru.practicum.server.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,10 +29,13 @@ public class RequestInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private long id;
+    @Column(nullable = false)
     private String app;
+    @Column(nullable = false)
     private String uri;
+    @Column(nullable = false)
     private String ip;
-    @Column(name = "requested_at")
+    @Column(name = "requested_at", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime timestamp;
 }

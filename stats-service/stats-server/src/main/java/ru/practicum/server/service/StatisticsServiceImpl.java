@@ -1,12 +1,12 @@
-package ru.practicum.server.services;
+package ru.practicum.server.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.practicum.dto.RequestInfoDto;
 import ru.practicum.dto.RequestInfoSummaryDto;
-import ru.practicum.server.mappers.RequestInfoMapper;
-import ru.practicum.server.mappers.RequestInfoSummaryMapper;
-import ru.practicum.server.repositories.RequestsInfoRepository;
+import ru.practicum.server.mapper.RequestInfoMapper;
+import ru.practicum.server.mapper.RequestInfoSummaryMapper;
+import ru.practicum.server.repository.RequestsInfoRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;

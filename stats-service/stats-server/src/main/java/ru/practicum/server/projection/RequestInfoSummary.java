@@ -1,9 +1,9 @@
-package ru.practicum.server.projections;
+package ru.practicum.server.projection;
 
 public interface RequestInfoSummary {
     String getApp();
 
     String getUri();
 
-    Integer getHits();
+    Long getHits();
 }

@@ -1,4 +1,4 @@
-package ru.practicum.server.controllers;
+package ru.practicum.server.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.practicum.dto.RequestInfoDto;
 import ru.practicum.dto.RequestInfoSummaryDto;
-import ru.practicum.server.services.StatisticsServiceImpl;
+import ru.practicum.server.service.StatisticsServiceImpl;
 
 import java.time.LocalDateTime;
 import java.util.List;
