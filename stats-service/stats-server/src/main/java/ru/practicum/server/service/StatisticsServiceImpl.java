@@ -6,6 +6,7 @@ import ru.practicum.dto.RequestInfoDto;
 import ru.practicum.dto.RequestInfoSummaryDto;
 import ru.practicum.server.mapper.RequestInfoMapper;
 import ru.practicum.server.mapper.RequestInfoSummaryMapper;
+import ru.practicum.server.model.RequestInfo;
 import ru.practicum.server.repository.RequestsInfoRepository;
 
 import java.time.LocalDateTime;
@@ -22,8 +23,10 @@ public class StatisticsServiceImpl implements StatisticsService {
     }
 
     @Override
-    public void saveRequestInfo(RequestInfoDto requestDto) {
-        repository.save(RequestInfoMapper.toRequestInfo(requestDto));
+    public RequestInfoDto saveRequestInfo(RequestInfoDto requestDto) {
+        RequestInfo requestInfo = RequestInfoMapper.toRequestInfo(requestDto);
+        repository.save(requestInfo);
+        return RequestInfoMapper.toRequestInfoDto(requestInfo);
     }
 
     @Override
