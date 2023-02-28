@@ -13,4 +13,13 @@ public class RequestInfoMapper {
                           .withTimestamp(requestDto.getTimestamp())
                           .build();
     }
+
+    public static RequestInfoDto toRequestInfoDto(RequestInfo requestInfo) {
+        return RequestInfoDto.builder()
+                             .withApp(requestInfo.getApp())
+                             .withUri(requestInfo.getUri())
+                             .withIp(requestInfo.getIp())
+                             .withTimestamp(requestInfo.getTimestamp())
+                             .build();
+    }
 }
