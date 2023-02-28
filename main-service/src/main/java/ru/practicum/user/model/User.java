@@ -26,10 +26,10 @@ public class User {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "email")
+    @Column(name = "email", length = 255)
     private String email;
 
-    @Column(name = "name", unique = true)
+    @Column(name = "name", length = 255, unique = true)
     private String name;
 
 }

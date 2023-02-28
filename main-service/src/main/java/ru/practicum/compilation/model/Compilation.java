@@ -29,7 +29,7 @@ public class Compilation {
     @Column(name = "pinned")
     private Boolean pinned;
 
-    @Column(name = "title")
+    @Column(name = "title", length = 255)
     private String title;
 
     public Long getId() {

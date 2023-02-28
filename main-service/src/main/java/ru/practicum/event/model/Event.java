@@ -69,13 +69,13 @@ public class Event {
     @Column(name = "participant_limit")
     private Long participantLimit;
 
-    @Column(name = "published_on")
+    @Column(name = "published_on", length = 255)
     private String publishedOn;
 
     @Column(name = "request_moderation")
     private Boolean requestModeration;
 
-    @Column(name = "state")
+    @Column(name = "state", length = 255)
     @Enumerated(EnumType.STRING)
     private EventState state;
 

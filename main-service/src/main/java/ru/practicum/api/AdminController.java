@@ -96,7 +96,7 @@ public class AdminController implements AdminApi {
     @Override
     public ResponseEntity<CompilationDto> saveCompilation(NewCompilationDto newCompilationDto) {
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(compilationService.saveCompilation(newCompilationDto));
+                             .body(compilationService.saveCompilation(newCompilationDto));
     }
 
     @Override

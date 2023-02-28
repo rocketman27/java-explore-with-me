@@ -6,6 +6,7 @@ import org.openapitools.model.EventRequestStatusUpdateResult;
 import org.openapitools.model.ParticipationRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.event.model.Event;
 import ru.practicum.event.model.EventState;
 import ru.practicum.event.repository.EventRepository;
@@ -15,7 +16,6 @@ import ru.practicum.request.mapper.ParticipationRequestMapper;
 import ru.practicum.request.model.ParticipationRequest;
 import ru.practicum.request.model.RequestStatus;
 import ru.practicum.request.repository.ParticipationRequestRepository;
-import ru.practicum.user.mapper.UserMapper;
 import ru.practicum.user.model.User;
 import ru.practicum.user.repository.UserRepository;
 
@@ -26,12 +26,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static java.lang.String.format;
-import static org.openapitools.model.EventRequestStatusUpdateRequest.*;
+import static org.openapitools.model.EventRequestStatusUpdateRequest.StatusEnum;
 
 @Slf4j
 @Service
 public class ParticipationRequestServiceImpl implements ParticipationRequestService {
-    private final UserMapper userMapper;
     private final ParticipationRequestRepository requestRepository;
     private final ParticipationRequestMapper requestMapper;
     private final UserRepository userRepository;
@@ -40,19 +39,17 @@ public class ParticipationRequestServiceImpl implements ParticipationRequestServ
     @Autowired
     public ParticipationRequestServiceImpl(ParticipationRequestRepository participationRequestRepository,
                                            ParticipationRequestMapper requestMapper, UserRepository userRepository,
-                                           EventRepository eventRepository,
-                                           UserMapper userMapper) {
+                                           EventRepository eventRepository) {
         this.requestRepository = participationRequestRepository;
         this.requestMapper = requestMapper;
         this.userRepository = userRepository;
         this.eventRepository = eventRepository;
-        this.userMapper = userMapper;
     }
 
     @Override
     public List<ParticipationRequestDto> getEventParticipants(Long userId, Long eventId) {
-        User user = userRepository.findById(userId)
-                                  .orElseThrow(() -> ExceptionUtils.getUserNotFoundException(userId));
+        userRepository.findById(userId)
+                      .orElseThrow(() -> ExceptionUtils.getUserNotFoundException(userId));
 
         Event event = eventRepository.findById(eventId)
                                      .orElseThrow(() -> ExceptionUtils.getEventNotFoundException(eventId));
@@ -89,6 +86,7 @@ public class ParticipationRequestServiceImpl implements ParticipationRequestServ
     }
 
     @Override
+    @Transactional
     public EventRequestStatusUpdateResult changeRequestStatus(Long userId, Long eventId,
                                                               EventRequestStatusUpdateRequest eventRequestStatusUpdateRequest) {
 
@@ -183,6 +181,7 @@ public class ParticipationRequestServiceImpl implements ParticipationRequestServ
     }
 
     @Override
+    @Transactional
     public ParticipationRequestDto addParticipationRequest(Long userId, Long eventId) {
         User user = userRepository.findById(userId)
                                   .orElseThrow(() -> ExceptionUtils.getUserNotFoundException(userId));
