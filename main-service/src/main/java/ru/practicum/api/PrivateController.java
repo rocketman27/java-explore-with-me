@@ -2,10 +2,12 @@ package ru.practicum.api;
 
 import lombok.extern.slf4j.Slf4j;
 import org.openapitools.api.PrivateApi;
+import org.openapitools.model.CommentDto;
 import org.openapitools.model.EventFullDto;
 import org.openapitools.model.EventRequestStatusUpdateRequest;
 import org.openapitools.model.EventRequestStatusUpdateResult;
 import org.openapitools.model.EventShortDto;
+import org.openapitools.model.FullCommentDto;
 import org.openapitools.model.NewEventDto;
 import org.openapitools.model.ParticipationRequestDto;
 import org.openapitools.model.UpdateEventUserRequest;
@@ -83,5 +85,32 @@ public class PrivateController implements PrivateApi {
     @Override
     public ResponseEntity<ParticipationRequestDto> cancelRequest(Long userId, Long requestId) {
         return ResponseEntity.of(Optional.of(requestService.cancelRequest(userId, requestId)));
+    }
+
+    @Override
+    public ResponseEntity<FullCommentDto> addUserComment(Long userId, Long eventId, CommentDto commentDto) {
+        return  ResponseEntity.status(HttpStatus.CREATED)
+                              .body(eventService.addComment(userId, eventId, commentDto));
+    }
+
+    @Override
+    public ResponseEntity<FullCommentDto> getComment(Long userId, Long eventId, Long commentId) {
+        return ResponseEntity.of(Optional.of(eventService.getComment(userId, eventId, commentId)));
+    }
+
+    @Override
+    public ResponseEntity<Void> deleteComment(Long userId, Long eventId, Long commentId) {
+        eventService.deleteComment(userId, commentId, commentId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @Override
+    public ResponseEntity<List<FullCommentDto>> getComments(Long userId, Long eventId) {
+        return PrivateApi.super.getComments(userId, eventId);
+    }
+
+    @Override
+    public ResponseEntity<FullCommentDto> updateComment(Long userId, Long eventId, Long commentId, CommentDto commentDto) {
+        return ResponseEntity.of(Optional.of(eventService.updateComment(userId, eventId, commentId, commentDto)));
     }
 }

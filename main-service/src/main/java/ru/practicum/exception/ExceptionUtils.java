@@ -21,4 +21,8 @@ public class ExceptionUtils {
     public static CompilationNotFound getCompilationNotFound(long compId) {
         return new CompilationNotFound(String.format("Compilation with id=%s is not found.", compId));
     }
+
+    public static CommentNotFoundException getCommentNotFound(long commentId) {
+        return new CommentNotFoundException(String.format("Comment with id=%s is not found.", commentId));
+    }
 }

@@ -109,4 +109,10 @@ public class AdminController implements AdminApi {
     public ResponseEntity<CompilationDto> updateCompilation(Long compId, UpdateCompilationRequest updateCompilationRequest) {
         return ResponseEntity.of(Optional.of(compilationService.updateCompilation(compId, updateCompilationRequest)));
     }
+
+    @Override
+    public ResponseEntity<Void> deleteCommentByAdmin(Long eventId, Long commentId) {
+        eventService.deleteComment(eventId, commentId);
+        return ResponseEntity.noContent().build();
+    }
 }
